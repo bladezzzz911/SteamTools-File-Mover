@@ -27,5 +27,8 @@ SFM — это легкая и быстрая утилита, разработа
 
 Дождитесь уведомления "ГОТОВО" в статус-баре.
 
+Ссылка на VirusTotal:
+https://www.virustotal.com/gui/file-analysis/NjZmYzkxOTIxYWJjYzU1ODk5NDlhZDdlOGU0MjllYjY6MTc3NDcyNTAyNg==
+
 👥 Авторы
 by пятый день недели (tg: @fxckws)
