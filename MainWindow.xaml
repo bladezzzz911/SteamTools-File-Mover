@@ -1,0 +1,93 @@
+﻿<Window x:Class="SteamFileMover.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="SFM | Smart Tool" Height="550" Width="450"
+        
+        Icon="icon.ico"
+        
+        Background="{DynamicResource WindowBg}" WindowStartupLocation="CenterScreen">
+
+	<Window.Resources>
+		<SolidColorBrush x:Key="WindowBg" Color="#0F0F0F"/>
+		<SolidColorBrush x:Key="PanelBg" Color="#161616"/>
+		<SolidColorBrush x:Key="TextMain" Color="White"/>
+		<SolidColorBrush x:Key="AccentBlue" Color="#007ACC"/>
+		<SolidColorBrush x:Key="ControlBg" Color="#252526"/>
+		<SolidColorBrush x:Key="ControlBorder" Color="#333"/>
+
+		<Style TargetType="Button">
+			<Setter Property="Background" Value="{DynamicResource ControlBg}"/>
+			<Setter Property="Foreground" Value="{DynamicResource TextMain}"/>
+			<Setter Property="BorderThickness" Value="1"/>
+			<Setter Property="BorderBrush" Value="{DynamicResource ControlBorder}"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="Button">
+						<Border Background="{TemplateBinding Background}" CornerRadius="4" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+							<ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,5"/>
+						</Border>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+	</Window.Resources>
+
+	<Grid Margin="15">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
+
+		<TextBlock Text="STEAM TOOLS" Foreground="{DynamicResource AccentBlue}"
+                   FontSize="24" FontWeight="ExtraBold" HorizontalAlignment="Center" Margin="0,0,0,15"/>
+
+		<TabControl Grid.Row="1" Background="Transparent" BorderThickness="0">
+			<TabItem Header="ГЛАВНАЯ">
+				<Grid Margin="0,10,0,0">
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="*"/>
+						<RowDefinition Height="Auto"/>
+					</Grid.RowDefinitions>
+
+					<Button Content="🚀 ВЫБРАТЬ АРХИВЫ И ПУТЬ" Height="60" Click="ProcessArchives_Click"
+                            Background="{DynamicResource AccentBlue}" Foreground="White" FontSize="16" FontWeight="Bold"/>
+
+					<Border Grid.Row="1" Background="{DynamicResource PanelBg}" CornerRadius="5" Padding="5" Margin="0,15">
+						<ListBox x:Name="LogList" Background="Transparent" BorderThickness="0" FontFamily="Consolas" FontSize="12">
+							<ListBox.ItemTemplate>
+								<DataTemplate>
+									<TextBlock Text="{Binding Message}" Foreground="{Binding Color}"/>
+								</DataTemplate>
+							</ListBox.ItemTemplate>
+						</ListBox>
+					</Border>
+					<TextBlock x:Name="StatusLabel" Grid.Row="2" Text="ОЖИДАНИЕ ВЫБОРА" HorizontalAlignment="Center" Foreground="#666" FontSize="10"/>
+				</Grid>
+			</TabItem>
+
+			<TabItem Header="НАСТРОЙКИ">
+				<StackPanel Margin="10">
+					<TextBlock Text="ВНЕШНИЙ ВИД" Foreground="{DynamicResource AccentBlue}" FontWeight="Bold" Margin="0,0,0,10"/>
+					<CheckBox x:Name="ColorLogCb" Content="Разноцветный лог" Foreground="{DynamicResource TextMain}" Margin="0,5" IsChecked="True"/>
+					<Separator Margin="0,10" Background="{DynamicResource ControlBorder}"/>
+					<TextBlock Text="ТЕМА ПРИЛОЖЕНИЯ" Foreground="{DynamicResource TextMain}" Margin="0,5"/>
+					<ComboBox x:Name="ThemeBox" SelectionChanged="ThemeBox_SelectionChanged">
+						<ComboBoxItem Content="Темная"/>
+						<ComboBoxItem Content="Светлая"/>
+					</ComboBox>
+					<Button Content="СОХРАНИТЬ ТЕМУ" Margin="0,20" Click="SaveSettings_Click" Height="35"/>
+				</StackPanel>
+			</TabItem>
+
+			<TabItem Header="АВТОРЫ">
+				<StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+					<TextBlock Text="by пятый день недели" Foreground="{DynamicResource TextMain}" FontSize="16" HorizontalAlignment="Center"/>
+					<TextBlock Text="tg:@fxckws" Foreground="{DynamicResource AccentBlue}" HorizontalAlignment="Center" Margin="0,2,0,20"/>
+					<TextBlock Text="большая благодарность Сергею" Foreground="{DynamicResource TextMain}" FontSize="16" HorizontalAlignment="Center"/>
+					<TextBlock Text="tg:@ogskilltrooper" Foreground="{DynamicResource AccentBlue}" HorizontalAlignment="Center" Margin="0,2,0,0"/>
+				</StackPanel>
+			</TabItem>
+		</TabControl>
+	</Grid>
+</Window>
